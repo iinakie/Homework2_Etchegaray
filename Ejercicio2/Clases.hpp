@@ -1,21 +1,19 @@
 #include <iostream>
-#include <map>
 #include <vector>
+#include <algorithm> 
 
 using namespace std;
 
 class Estudiante{
     private:
-        string nombreCom;
+        string nombre;
         int legajo;
-        map< string, int > Notas;    
-
+        vector<std::pair<std::string, float>> Notas;
+    
     public:
         Estudiante(string nombre, int legajo);
-
-        string getN();
-        int getL();
-        
+        string getN() const;
+        int getL() const;
         float Promedio();
 
         void agregarNota(string curso, float Nota);
@@ -24,18 +22,20 @@ class Estudiante{
 
 class Curso{
     private:
-        vector<Estudiante*> estudiantes;
+        string N_materia;
+        vector< const Estudiante*> estudiantes;
         static const int lugares = 20;
         
     public:
-        Curso();
-        ~Curso();
+        Curso(string materia);
+        Curso(Curso* curso);
+
 
         void inscribirE(Estudiante* e);
         void desincribirE(Estudiante* e);
 
-        bool inscripto_s_n(int legajo);
-        bool lleno_s_n();
+        bool inscripto_s_n(int legajo) const;
+        bool lleno_s_n() const;
 
-        void imprimirEorden();
+        void imprimirEorden() const;
 };
