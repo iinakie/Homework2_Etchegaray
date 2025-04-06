@@ -1,6 +1,18 @@
 #include "Tiempo.hpp"
 #include <iostream>
 #include <iomanip>
+/*
+En este archivo hago la parte que define cómo funcionan las funciones de la clase Tiempo.Acá están todas las instrucciones reales de lo que 
+hacen las cosas.
+- El constructor sirve para crear un objeto Tiempo con hora, minutos, segundos y si es a.m. o p.m.
+- Los métodos setH, setM, setS y setAP sirven para cambiar los valores de hora, minuto, segundo y si es a.m. o p.m.
+- Los métodos getH, getM, getS y getAP me devuelven esos valores.
+- Para mostrar las horas hice los show:
+   - show12h() muestra la hora en formato tipo “03h, 14m, 42s am”.
+   - show24h() muestra la hora como si fuera de 24 horas, por ejemplo “13:14:42”.
+- Las funciones validarH, validarM y validarS sirven para chequear si los valores que pongo son válidos 
+(por ejemplo que la hora no sea 25 o los minutos 80).
+*/
 
 Tiempo :: Tiempo(int h, int m, int s, bool ap){
     hora = h;

@@ -4,13 +4,16 @@
 
 using namespace std;
 
+// Para compilar: g++ Clases.hpp funciones2.cpp  main2.cpp -o run
+// Para correrlo: ./run
+
 int main() {
     string nombreCurso;
     cout << "Ingrese el nombre del curso: ";
     getline(cin, nombreCurso);
 
     Curso curso1(nombreCurso);
-    Curso cursoClonado(""); // objeto vacío por ahora
+    Curso cursoClonado(""); 
 
     int opcion;
 
@@ -32,6 +35,7 @@ int main() {
                 string nombre;
                 int legajo;
                 cout << "Nombre del estudiante: " << endl;
+                cin.ignore(); 
                 getline(cin, nombre);
                 cout << "Legajo: " << endl;
                 cin >> legajo;
@@ -76,7 +80,7 @@ int main() {
                 break;
 
             case 6:
-                cursoClonado = Curso(curso1); // usamos constructor copia
+                cursoClonado = curso1; // usamos constructor copia
                 cout << "Curso clonado exitosamente." << endl;
                 break;
 

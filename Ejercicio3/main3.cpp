@@ -3,7 +3,8 @@
 #include <memory>
 #include "clases.hpp"
 
-
+// Para compilar: g++ clases.hpp funciones3.cpp  main3.cpp -o run
+// Para correrlo: ./run
 
 int main() {
     // Operaciones con los ENTEROS
