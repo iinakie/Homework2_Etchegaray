@@ -89,7 +89,7 @@ int main() {
                 break;
 
             default:
-                cout << "Opción inválida." << endl;
+                cout << "Opción inválida." << endl  ;
                 break;
         }
 
