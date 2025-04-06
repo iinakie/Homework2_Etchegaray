@@ -21,8 +21,8 @@ int main() {
         cout << "3. Verificar si un estudiante está inscripto" << endl;
         cout << "4. Verificar si el curso está lleno" << endl;
         cout << "5. Imprimir estudiantes ordenados alfabeticamente" << endl;
-        cout << "6. Clonar curso" << endl;
-        cout << "7. Imprimir curso clonado" << endl;
+        cout << "6. Copiar curso" << endl;
+        cout << "7. Imprimir curso copiado" << endl;
         cout << "8. Salir del Programa" << endl;
         cout << "Seleccione una opción: " << endl;
         cin >> opcion;
@@ -43,10 +43,9 @@ int main() {
 
             case 2: {
                 int legajo;
-                cout << "Ingrese legajo del estudiante a desinscribir: " << endl;
+                cout << "Ingresa el legajo del estudiante a desinscribir: " << endl;
                 cin >> legajo;
 
-                // Creamos un objeto temporal solo con el legajo para buscar
                 Estudiante temp("", legajo);
                 curso1.desincribirE(&temp);
                 break;
@@ -54,22 +53,21 @@ int main() {
 
             case 3: {
                 int legajo;
-                cout << "Ingrese legajo: ";
+                cout << "Ingresa el legajo: " << endl;
                 cin >> legajo;
-                cin.ignore();
 
                 if (curso1.inscripto_s_n(legajo))
-                    cout << "El estudiante está inscripto.\n";
+                    cout << "El estudiante está inscripto." << endl;
                 else
-                    cout << "El estudiante NO está inscripto.\n";
+                    cout << "El estudiante NO está inscripto." << endl;
                 break;
             }
 
             case 4: {
                 if (curso1.lleno_s_n())
-                    cout << "El curso está lleno.\n";
+                    cout << "El curso está lleno." << endl;
                 else
-                    cout << "Aún hay lugares disponibles.\n";
+                    cout << "Hay lugares disponibles." << endl;
                 break;
             }
 
@@ -79,7 +77,7 @@ int main() {
 
             case 6:
                 cursoClonado = Curso(curso1); // usamos constructor copia
-                cout << "Curso clonado exitosamente.\n";
+                cout << "Curso clonado exitosamente." << endl;
                 break;
 
             case 7:
@@ -87,11 +85,11 @@ int main() {
                 break;
 
             case 8:
-                cout << "Saliendo...\n";
+                cout << "Saliendo..." << endl;
                 break;
 
             default:
-                cout << "Opción inválida.\n";
+                cout << "Opción inválida." << endl;
                 break;
         }
 

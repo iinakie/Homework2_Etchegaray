@@ -18,6 +18,9 @@ class Estudiante{
 
         void agregarNota(string curso, float Nota);
 
+        bool operator<(const Estudiante& otro) const;
+        friend ostream& operator<<(ostream& os, const Estudiante& e);
+
 };
 
 class Curso{

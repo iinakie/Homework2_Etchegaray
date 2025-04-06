@@ -39,39 +39,37 @@ Curso::Curso(string materia) {
     N_materia = materia;
 }
 
-Curso::Curso(const Curso& otroCurso) {
+Curso::Curso(const Curso& otroCurso)
+    : N_materia(otroCurso.N_materia), estudiantes(otroCurso.estudiantes) {
     /*
-        Esta es una copia del objeto Curso. Donde se copian los punteros a los mismos objetos Estudiante y no se crean nuevas 
-        instancias de Estudiante. Esto puede hacer que varios cursos compartan los mismos estudiantes.
-
-        IMPORTANTE: Como los estudiantes son compartidos, no debemos hacer delete
-        en el destructor ni asumir propiedad exclusiva.
+        COPIA (shallow copy):
+        Este constructor copia el nombre del curso y la lista de punteros a estudiantes. Use este tipo de copia porque, no se crean nuevos objetos 
+        Estudiante, sino que se comparten los mismos punteros y esto permite que varios cursos apunten a los mismos estudiantes.
     */
-    N_materia = otroCurso.N_materia;
-    estudiantes = otroCurso.estudiantes; // copia 
 }
+
 void Curso :: inscribirE(Estudiante* e){
     if(lleno_s_n()){
-        cout << "En este curso ya no entran mas estudiantes. /n";
+        cout << "En este curso ya no entran mas estudiantes." << endl;
         return;
     }
     if(inscripto_s_n(e->getL())){
-        cout << "Este estudiante ya esta inscripto en este curso./n";
+        cout << "Este estudiante ya esta inscripto en este curso." << endl;
         return;
     }
     estudiantes.push_back(e);
-    cout << "Este estudiante ha sido inscripto en el curso./n";
+    cout << "Este estudiante ha sido inscripto en el curso." << endl;
 
 }
 void Curso :: desincribirE(Estudiante* e){
     for (auto Eeliminar = estudiantes.begin(); Eeliminar != estudiantes.end(); ++Eeliminar) {
         if ((*Eeliminar)->getL() == e->getL()) {
             estudiantes.erase(Eeliminar);
-            cout << "Este estudiante ha sido desinscripto.\n";
+            cout << "Este estudiante ha sido desinscripto." << endl;
             return;
         }
     }
-    cout << "Este estudiante no ha sido encontrado en el curso.\n";
+    cout << "Este estudiante no ha sido encontrado en el curso." << endl;
 }
 
 bool Curso :: inscripto_s_n( int legajo) const{
@@ -87,10 +85,10 @@ bool Curso :: lleno_s_n()const {
 
 void Curso :: imprimirEorden() const{
     vector<const Estudiante*> copy = estudiantes;
-    sort(copy.begin(), copy.end(), [](Estudiante*a, Estudiante*b){
-        return a* < *b;
+    sort(copy.begin(), copy.end(), [](const Estudiante* a, const Estudiante* b) {
+        return *a < *b; 
     });
-    cout << "Los estudiantes del curso " << N_materia << "ordenados alfabeticamente son:/n";
+    cout << "Los estudiantes del curso " << N_materia << "ordenados alfabeticamente son:" << endl;
 
     for(const Estudiante* e : copy){
         cout << *e << endl;
